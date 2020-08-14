@@ -8,14 +8,16 @@ NotUniqueError, DoesNotExist, ValidationError, InvalidQueryError
 
 from resources.errors import SchemaValidationError, MovieAlreadyExistsError, \
 InternalServerError, UpdatingMovieError, DeletingMovieError, MovieNotExistsError
-
+import requests
 
 
 class MoviesApi(Resource):
     @jwt_required
     def get(self):
         movies = Movie.objects().to_json()
-        return Response(movies, mimetype="application/json", status=200)
+        #return Response(movies, mimetype="application/json", status=200)
+        return requests.get(movies).json()
+
 
     @jwt_required
     def post(self):

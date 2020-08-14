@@ -13,8 +13,6 @@ api = Api(app,  prefix="/api",  errors=errors)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-app.config['MONGODB_SETTINGS'] = {'host': 'mongodb://localhost:27017/movie-bag'}
-
 initialize_db(app)
 
 initialize_routes(api)
